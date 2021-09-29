@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from project.service import ToDoService
-from project.models import Schema
+
 
 import json
 
@@ -48,7 +48,3 @@ def get_item(item_id):
 def delete_item(item_id):
     return jsonify(ToDoService().delete(item_id))
 
-
-if __name__ == "__main__":
-    Schema()
-    app.run()
