@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from service import ToDoService
-from models import Schema
+from project.service import ToDoService
+from project.models import Schema
 
 import json
 
@@ -32,6 +32,7 @@ def list_todo():
 
 @app.route("/todo", methods=["POST"])
 def create_todo():
+    print(request)
     return jsonify(ToDoService().create(request.get_json()))
 
 

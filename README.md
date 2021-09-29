@@ -21,3 +21,20 @@ In this tutorial I have complied the [React Frontend](https://medium.com/bhavani
 3. To build docker image `docker build -t todo-flask:latest .`
 4. To run the docker container `docker run -it -p 5000:8888 todo-flask `
 
+### Steps to setup CI/CD
+
+1. Setup py app repo in Github
+2. Action - Build Job
+3. A. Action - Py Scan
+4. Action - Flask API Test
+5. Setup frontend repo in Github
+6. Action - Build Job
+7. Action - Jest    
+7. A. Action - Js scan
+8. Action - Selenium repo checkout
+9. Deploy Py to Heroku
+9. Action Selenium test
+10. Promte to Prod
+11. Deploy JS to Heroku
+12. Action Selenium test
+13. Promote to Prod
