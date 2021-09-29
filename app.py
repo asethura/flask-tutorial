@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 from project.service import ToDoService
-
+from project.models import Schema
 
 import json
 
 app = Flask(__name__)
 
+@app.before_first_request
+def setup():
+     Schema()
 
 @app.after_request
 def add_headers(response):
