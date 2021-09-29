@@ -21,7 +21,7 @@ def postCall(client, path, myobj):
 
 def test_hello_world(client):
     result = call(client, '/')
-    assert result == 'Hello World!'
+    assert result == 'Hello World - 2!'
 
 def test_hello_name(client):
     result = call(client, '/Ashok')
