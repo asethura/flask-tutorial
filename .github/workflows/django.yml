@@ -52,6 +52,8 @@ jobs:
         echo "  login $HEROKU_EMAIL" >> ~/.netrc
         echo "  password $HEROKU_API_KEY" >> ~/.netrc
         cat ~/.netrc
+        echo ${{ secrets.HEROKU_STAGING_APP_NAME }}
+        echo $HEROKU_STAGING_APP_NAME
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
