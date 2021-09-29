@@ -38,5 +38,6 @@ def test_create_todo_(client):
     myobj = {'Title': 'Second Todo', 'Description': 'asdad'}
     updateResult = postCall(client, '/todo', myobj)
     result = call(client, '/todo')
+    print(result)
     jResult = json.loads(result)
     assert len(jResult) == 1
