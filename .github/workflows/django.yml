@@ -65,5 +65,8 @@ jobs:
 
     - name: Push to Heroku
       run: |
-        git pull
+        git fetch origin master
+        git pull origin master
+        git add .
+        git commit -m 'your commit message'
         git push heroku master
