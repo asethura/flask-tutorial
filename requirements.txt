@@ -10,3 +10,4 @@ gnureadline==8.0.0
 requests==2.21.0
 urllib3
 Werkzeug==0.15.3
+gunicorn==19.3.0
