@@ -3,6 +3,7 @@ import sqlite3
 
 class Schema:
     def __init__(self):
+        print("Initializing tables")
         self.conn = sqlite3.connect('todo.db')
         self.create_user_table()
         self.create_to_do_table()
