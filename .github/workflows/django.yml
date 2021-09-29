@@ -38,6 +38,5 @@ jobs:
     
     - name: Run App
       run: |
-        python app/app.py &
-        pytest app/tests/*.py
+        pytest tests/*.py
         
