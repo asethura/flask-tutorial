@@ -64,5 +64,5 @@ jobs:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_STAGING_APP_NAME }}
 
     - name: Push to Heroku
-      if: github.ref == 'refs/heads/master' && job.status == 'success'
+      run: git fetch --all --unshallow
       run: git push heroku master
