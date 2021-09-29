@@ -44,7 +44,7 @@ jobs:
         
     - name: Heroku login credentials
         run: |
-          touch ~/.netrc
+          echo "helo"
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
