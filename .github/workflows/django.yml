@@ -72,7 +72,7 @@ jobs:
 
     - name: Add Heroku remote
       run: heroku git:remote --app $HEROKU_APP_NAME
-        env:
+      env:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_STAGING_APP_NAME }}
 
     - name: Push to Heroku staging
