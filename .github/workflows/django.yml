@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -42,7 +41,20 @@ jobs:
     - name: Run Tests
       run: |
         pytest tests/*.py
-        
+
+   deploy:     
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
+
     - name: Heroku login credentials
       run: |
         touch ~/.netrc
@@ -53,17 +65,29 @@ jobs:
         echo "  login $HEROKU_EMAIL" >> ~/.netrc
         echo "  password $HEROKU_API_KEY" >> ~/.netrc
         cat ~/.netrc
-        echo ${{ secrets.HEROKU_STAGING_APP_NAME }}
-        echo $HEROKU_STAGING_APP_NAME
+        
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
     - name: Add Heroku remote
       run: heroku git:remote --app $HEROKU_APP_NAME
-      env:
+        env:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_STAGING_APP_NAME }}
 
-    - name: Push to Heroku
+    - name: Push to Heroku staging
+      run: |
+        git push heroku master
+
+    - name: Integration Tests
+      run: |
+        pytest api-tests/apitest.py
+
+    - name: Add Heroku prod remote
+      run: heroku git:remote --app $HEROKU_APP_NAME
+      env:
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_PROD_APP_NAME }}
+
+    - name: Push to Heroku production
       run: |
         git push heroku master
