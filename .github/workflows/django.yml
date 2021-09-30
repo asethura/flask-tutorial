@@ -81,6 +81,7 @@ jobs:
 
     - name: Integration Tests
       run: |
+        pip install pytest
         pytest api-tests/apitest.py
 
     - name: Add Heroku prod remote
