@@ -42,7 +42,7 @@ jobs:
       run: |
         pytest tests/*.py
 
-   deploy:     
+  deploy:     
     runs-on: ubuntu-latest
     needs: build
     strategy:
