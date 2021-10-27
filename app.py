@@ -36,6 +36,7 @@ def list_todo():
 @app.route("/todo", methods=["POST"])
 def create_todo():
     print(request)
+    print ("my password xyz")
     return jsonify(ToDoService().create(request.get_json()))
 
 
