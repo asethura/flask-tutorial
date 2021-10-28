@@ -5,7 +5,7 @@ conn = sqlite3.connect('todo.db')
 
 @pytest.fixture(autouse=True)
 def client():
-    from app import app
+    from project.app import app
     app.config['TESTING'] = True
     yield app.test_client()
 
