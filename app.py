@@ -5,6 +5,7 @@ from project.models import Schema
 import json
 
 app = Flask(__name__)
+password = 'xyz'
 
 @app.before_first_request
 def setup():
@@ -36,7 +37,7 @@ def list_todo():
 @app.route("/todo", methods=["POST"])
 def create_todo():
     print(request)
-    print ("my password xyz")
+    print ("my password - " + password )
     return jsonify(ToDoService().create(request.get_json()))
 
 
