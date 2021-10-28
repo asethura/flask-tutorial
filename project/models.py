@@ -94,14 +94,14 @@ class ToDoModel:
 
     def list_items(self, where_clause=""):
        
-        #query = "SELECT id, Title, Description, DueDate, _is_done from %s WHERE _is_deleted != '%s' "
+        query = "SELECT id, Title, Description, DueDate, _is_done from %s WHERE _is_deleted != '%s' "
 
-        query = "SELECT id, Title, Description, DueDate, _is_done from {self.TABLENAME} WHERE _is_deleted != '{1}' " + where_clause
+        #query = "SELECT id, Title, Description, DueDate, _is_done from {self.TABLENAME} WHERE _is_deleted != '{1}' " + where_clause
         
         print (query)
-        #result_set = self.conn.execute(query, self.TABLENAME, where_clause).fetchall()
+        result_set = self.conn.execute(query, self.TABLENAME, where_clause).fetchall()
         
-        result_set = self.conn.execute(query).fetchall()
+        #result_set = self.conn.execute(query).fetchall()
         result = [{column: row[i]
                   for i, column in enumerate(result_set[0].keys())}
                   for row in result_set]
