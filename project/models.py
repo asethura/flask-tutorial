@@ -94,11 +94,11 @@ class ToDoModel:
 
     def list_items(self, where_clause=""):
        
-        query = f"SELECT id, Title, Description, DueDate, _is_done from {self.TABLENAME} WHERE _is_deleted != 1 AND id = 1"
+        query = f"SELECT id, Title, Description, DueDate, _is_done from  Todo WHERE _is_deleted != 1 AND id = 1"
 
         #query = "SELECT id, Title, Description, DueDate, _is_done from {self.TABLENAME} WHERE _is_deleted != '{1}' " + where_clause
         
-        print (where_clause)
+        print ("tbl name " + self.TABLENAME)
         #tuple_1 = {self.TABLENAME, where_clause}
     
         result_set = self.conn.execute(query).fetchall()
