@@ -41,7 +41,7 @@ jobs:
     - name: Vulnerability Code Scan
       run: |
         pip install bandit
-        bandit .
+        bandit **/*.py
         
     - name: Run Tests
       run: |
